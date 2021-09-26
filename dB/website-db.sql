@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: website-db:3306
--- Tiempo de generación: 26-09-2021 a las 02:20:53
+-- Tiempo de generación: 26-09-2021 a las 04:20:37
 -- Versión del servidor: 5.7.33
 -- Versión de PHP: 7.4.16
 
@@ -200,6 +200,19 @@ INSERT INTO `auth_users_permissions` (`user_id`, `permission_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ci_sessions`
+--
+
+CREATE TABLE `ci_sessions` (
+  `id` varchar(128) NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `data` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `experiences`
 --
 
@@ -254,7 +267,8 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (20, '2021-09-03-150113', 'App\\Database\\Migrations\\AddPortfolios', 'default', 'App', 1632087939, 1),
 (21, '2021-09-15-183140', 'App\\Database\\Migrations\\AddExperiences', 'default', 'App', 1632087939, 1),
 (22, '2021-09-15-183251', 'App\\Database\\Migrations\\AddStudies', 'default', 'App', 1632087940, 1),
-(23, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1632087952, 2);
+(23, '2017-11-20-223112', 'Myth\\Auth\\Database\\Migrations\\CreateAuthTables', 'default', 'Myth\\Auth', 1632087952, 2),
+(24, '2021-09-26-041546', 'App\\Database\\Migrations\\CreateCiSessionsTable', 'default', 'App', 1632629756, 3);
 
 -- --------------------------------------------------------
 
@@ -395,7 +409,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password_hash`, `reset_hash`, `reset_at`, `reset_expires`, `activate_hash`, `status`, `status_message`, `active`, `force_pass_reset`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'admin@baubyte.com.ar', 'baubyte', '$2y$10$df0ljJ4mMj9OA2d/YbZ8z.zPQgPNnLx44RlMyrQstR4A28yzu9wAe', NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-19 18:46:01', '2021-09-19 18:46:01', NULL);
+(1, 'admin@baubyte.com.ar', 'baubyte', '$2y$10$df0ljJ4mMj9OA2d/YbZ8z.zPQgPNnLx44RlMyrQstR4A28yzu9wAe', '75a90fe28ba336ca8e487f1746fbd449', NULL, '2021-09-26 02:02:03', NULL, NULL, NULL, 1, 0, '2021-09-19 18:46:01', '2021-09-26 01:02:03', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -461,6 +475,13 @@ ALTER TABLE `auth_tokens`
 ALTER TABLE `auth_users_permissions`
   ADD KEY `auth_users_permissions_permission_id_foreign` (`permission_id`),
   ADD KEY `user_id_permission_id` (`user_id`,`permission_id`);
+
+--
+-- Indices de la tabla `ci_sessions`
+--
+ALTER TABLE `ci_sessions`
+  ADD PRIMARY KEY (`id`,`ip_address`),
+  ADD KEY `timestamp` (`timestamp`);
 
 --
 -- Indices de la tabla `experiences`
@@ -559,7 +580,7 @@ ALTER TABLE `experiences`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `portfolios`

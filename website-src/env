@@ -23,9 +23,9 @@ CI_ENVIRONMENT = development
 app.baseURL = 'http://localhost/'
 app.forceGlobalSecureRequests = false
 
-app.sessionDriver = 'CodeIgniter\Session\Handlers\FileHandler'
+app.sessionDriver =  'CodeIgniter\Session\Handlers\FileHandler'#'CodeIgniter\Session\Handlers\DatabaseHandler'
 app.sessionCookieName = 'baubyte_session'
-#app.sessionSavePath = null
+#app.sessionSavePath = 'ci_sessions'
 app.sessionMatchIP = true #false
 app.sessionTimeToUpdate = 300
 app.sessionRegenerateDestroy = false
@@ -89,7 +89,7 @@ database.default.DBDriver = MySQLi
 # ENCRYPTION
 #--------------------------------------------------------------------
 
-encryption.key = hex2bin:c21d43663b71bbbaaf766038627275a14da3dfe6d319bab9d518df899310e6ee
+encryption.key = 
 encryption.driver = OpenSSL
 encryption.blockSize = 16
 encryption.digest = SHA512
