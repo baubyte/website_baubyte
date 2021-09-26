@@ -23,7 +23,7 @@ hold-transition login-page
             <form action="<?= site_url(route_to('reset-password')) ?>" method="post">
                 <?= csrf_field() ?>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control <?= (session('errors.token')) ? 'is-invalid' : '' ?>" placeholder="Código" name="token" value="<?= old('token', $token ?? '') ?>>
+                    <input type="text" class="form-control <?= (session('errors.token')) ? 'is-invalid' : '' ?>" placeholder="Código" name="token" value="<?= old('token', $token ?? '') ?>">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-barcode"></span>
