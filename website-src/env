@@ -23,7 +23,8 @@ CI_ENVIRONMENT = development
 app.baseURL = 'http://localhost/'
 app.forceGlobalSecureRequests = false
 
-app.sessionDriver =  'CodeIgniter\Session\Handlers\FileHandler'#'CodeIgniter\Session\Handlers\DatabaseHandler'
+app.sessionDriver =  'CodeIgniter\Session\Handlers\FileHandler'
+#'CodeIgniter\Session\Handlers\DatabaseHandler'
 app.sessionCookieName = 'baubyte_session'
 #app.sessionSavePath = 'ci_sessions'
 app.sessionMatchIP = true #false
