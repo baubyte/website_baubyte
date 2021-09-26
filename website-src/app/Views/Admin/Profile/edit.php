@@ -19,7 +19,7 @@ Editar
                 <div class="card card-success card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="<?=!empty($profile->avatar) ? base_url(route_to('image_profile',$profile->avatar)):'https://cdn.jsdelivr.net/npm/admin-lte@3.0.2/dist/img/avatar.png'?>" alt="User profile picture" id="preview">
+                            <img class="profile-user-img img-fluid img-circle" src="<?=!empty($profile->avatar) ? base_url('uploads/profile/images/'.$profile->avatar):'https://cdn.jsdelivr.net/npm/admin-lte@3.0.2/dist/img/avatar.png'?>" alt="User profile picture" id="preview">
                         </div>
                         <h3 class="profile-username text-center" ><span id="name-preview"><?= old('name') ?? $profile->name?></span> <span id="surname-preview"><?= old('surname') ?? $profile->surname?></span></h3>
                         <p class="text-muted text-center" id="specialty-preview"><?= old('specialty_es') ?? $profile->specialty_es?></p>

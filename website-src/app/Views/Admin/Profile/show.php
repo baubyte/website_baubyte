@@ -19,7 +19,7 @@ Perfil
                 <div class="card card-success card-outline">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url(route_to('image_profile',$profile->avatar))?>" alt="User profile picture" id="preview">
+                            <img class="profile-user-img img-fluid img-circle" src="<?= base_url('uploads/profile/images/'.$profile->avatar)?>" alt="User profile picture" id="preview">
                         </div>
                         <h3 class="profile-username text-center" ><span id="name-preview"><?=$profile->fullname?></h3>
                         <p class="text-muted text-center" id="specialty-preview"><?=$profile->specialty_es?></p>
