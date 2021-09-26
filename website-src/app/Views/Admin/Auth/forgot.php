@@ -44,11 +44,6 @@ hold-transition login-page
             <p class="mt-3 mb-1">
                 <a href="<?= site_url(route_to('login')) ?>">Iniciar Sesión</a>
             </p>
-            <p class="mb-0">
-            <?php if ($config->allowRegistration) : ?>
-                <a href="<?= site_url(route_to('register')) ?>" class="text-center">Registrarme</a>
-                <?php endif; ?>
-            </p>
         </div>
         <!-- /.login-card-body -->
     </div>
