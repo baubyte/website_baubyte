@@ -107,7 +107,10 @@ class HomeController extends BaseController
 		//Experience Model
 		$experienceModel = new ExperienceModel();
 		$experiences = $experienceModel->orderBy('start', 'DESC')->findAll();
-		$html = view('Front/pdf/cv', ['profile' => $profile, 'skills' => $skills, 'experiences' => $experiences]);
+		//Study Model
+		$studyModel = new StudyModel();
+		$studies = $studyModel->orderBy('start','DESC')->findAll();
+		$html = view('Front/pdf/cv', ['profile' => $profile, 'skills' => $skills, 'experiences' => $experiences, 'studies' => $studies]);
 		$dompdf->loadHtml($html);
         $dompdf->render();
         $dompdf->stream('paredBaezMartinCV.pdf');
