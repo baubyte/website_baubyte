@@ -153,8 +153,9 @@
                 Email: <a class="email" href="mailto:<?= $profile->email_contact ?>"><?= $profile->email_contact ?></a>
             </p>
             <p>
-                <?= lang('App.language') ?>: <a class="email" href="#"><?= $profile->{lang('App.language')} ?></a>
-            </p </div>
+                <?=lang('App.language_title')?>: <a class="email" href="#"><?= $profile->{lang('App.language')} ?></a>
+            </p> 
+        </div>
 
             <div id="objective">
                 <p>
@@ -188,12 +189,14 @@
                 </dd>
                 <dd class="clear"></dd>
 
-                <dt>Education</dt>
+                <dt><?=lang('App.education')?></dt>
                 <dd>
-                    <h2>Withering Madness University - Planet Vhoorl</h2>
-                    <p><strong>Major:</strong> Public Relations<br />
-                        <strong>Minor:</strong> Scale Tending
+                <?php foreach ($studies as $study):?>
+                    <h2><?=$study->entity?></h2>
+                    <p><strong><?=$study->{lang('App.education_title')}?></strong><br/>
+                        <strong><?=$study->start?> - <?=$study->end?></strong>
                     </p>
+                <?php endforeach;?>
                 </dd>
                 <dd class="clear"></dd>
             </dl>
