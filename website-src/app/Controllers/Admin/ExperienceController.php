@@ -82,8 +82,8 @@ class ExperienceController extends BaseController
 		/**Entidad Experience asignamos las propiedades*/
 		$experienceEntity = new ExperienceEntity($this->request->getPost());
 		if (!empty($this->request->getPost('end'))) {
-			if ($experienceEntity->end < $experienceEntity->start) {
-				return redirect()->back()->withInput()->with('errors',['end'=>'La Fecha Fin no pude ser Menor a la Fecha Inicio.'] );
+			if (strtotime($experienceEntity->end) < strtotime($experienceEntity->start)) {
+				return redirect()->back()->withInput()->with('errors',['end'=>"La Fecha Fin no puede ser Menor a la Fecha Inicio"] );
 			}
 		}
 		/**Insertamos el experience */
@@ -151,8 +151,8 @@ class ExperienceController extends BaseController
 		/**Entidad Post asignamos las propiedades*/
 		$experienceEntity = new ExperienceEntity($this->request->getPost());
 		if (!empty($this->request->getPost('end'))) {
-			if ($experienceEntity->end < $experienceEntity->start) {
-				return redirect()->back()->withInput()->with('errors',['end'=>'La Fecha Fin no pude ser Menor a la Fecha Inicio.'] );
+			if (strtotime($experienceEntity->end) < strtotime($experienceEntity->start)) {
+				return redirect()->back()->withInput()->with('errors',['end'=>"La Fecha Fin no puede ser Menor a la Fecha Inicio"] );
 			}
 		}
 		/**Actualiza el Experience */

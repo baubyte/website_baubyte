@@ -98,7 +98,7 @@ class ExperienceEntity extends Entity
 	 */
 	public function getStart()
 	{
-		$start = str_replace('/', '-', $this->attributes['start']);
+		$start = str_replace('-', '/', $this->attributes['start']);
 		$start = (new DateTime($start))->format('d-m-Y');
 		return $start;
 	}
@@ -117,7 +117,7 @@ class ExperienceEntity extends Entity
 			return lang('App.end_date');
 		}
 
-		$end = str_replace('/', '-', $this->attributes['end']);
+		$end = str_replace('-', '/', $this->attributes['end']);
 		$end = (new DateTime($end))->format('d-m-Y');
 		return $end;
 	}
