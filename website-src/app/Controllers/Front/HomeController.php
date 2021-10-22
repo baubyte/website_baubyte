@@ -50,10 +50,10 @@ class HomeController extends BaseController
 			return redirect()->to(site_url('#contact'))->withInput()->with('errors', $this->validator->getErrors());
 		}
 		//Recibimos la informacion
-		$name = $this->request->getGet('name');
-		$from = $this->request->getGet('email');
-		$subject = $this->request->getGet('subject');
-		$message = $this->request->getGet('message');
+		$name = $this->request->getPost('name');
+		$from = $this->request->getPost('email');
+		$subject = $this->request->getPost('subject');
+		$message = $this->request->getPost('message');
 		//Aramos un array con los datos para pasarla a la vista
 		$dataView = [
 			'name' => $name,
