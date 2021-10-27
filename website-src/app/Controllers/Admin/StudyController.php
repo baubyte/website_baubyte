@@ -10,7 +10,7 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class StudyController extends BaseController
 {
-	protected $studyModel;//Modelo Study
+	protected $studyModel; //Modelo Study
 	/**
 	 * Constructor
 	 */
@@ -39,21 +39,21 @@ class StudyController extends BaseController
 	{
 		//Estado generado de la consulta
 		$builder = $this->studyModel->getStudies();
-        return DataTable::of($builder)
-		//Agrega un columna con en este caso agrega los botones de editar y eliminar
-		->add('action', function($row){
-            return "
-			<a class='btn btn-info btn-sm' href='".site_url(route_to("show_study",$row->id))."'><i class='fas fa-eye'></i></a>
-			<a class='btn btn-success btn-sm' href='".site_url(route_to("edit_study",$row->id))."'><i class='fas fa-edit'></i></a> 
-			<a type='submit' class='btn btn-danger btn-sm' href='".site_url(route_to("delete_study",$row->id))."'><i class='fas fa-trash-alt'></i></a>
+		return DataTable::of($builder)
+			//Agrega un columna con en este caso agrega los botones de editar y eliminar
+			->add('action', function ($row) {
+				return "
+			<a class='btn btn-info btn-sm' href='" . site_url(route_to("show_study", $row->id)) . "'><i class='fas fa-eye'></i></a>
+			<a class='btn btn-success btn-sm' href='" . site_url(route_to("edit_study", $row->id)) . "'><i class='fas fa-edit'></i></a> 
+			<a type='submit' class='btn btn-danger btn-sm' href='" . site_url(route_to("delete_study", $row->id)) . "'><i class='fas fa-trash-alt'></i></a>
 			";
-        })
-		//Agrega la columna para enumerar los registros
-		->addNumbering('no')
-		//Columnas habilitadas para la búsqueda
-		->setSearchableColumns(['entity','title_es','start','end'])
-		//devuelve el JSON
-		->toJson(true);
+			})
+			//Agrega la columna para enumerar los registros
+			->addNumbering('no')
+			//Columnas habilitadas para la búsqueda
+			->setSearchableColumns(['entity', 'title_es', 'start', 'end'])
+			//devuelve el JSON
+			->toJson(true);
 	}
 
 	/**
@@ -72,7 +72,7 @@ class StudyController extends BaseController
 	 * redirecciona a la vista index
 	 *
 	 * @return redirect
-	*/
+	 */
 	public function store()
 	{
 		//Validamos lo datos
@@ -82,13 +82,13 @@ class StudyController extends BaseController
 		/**Entidad Study asignamos las propiedades*/
 		$studyEntity = new StudyEntity($this->request->getPost());
 		if (!empty($this->request->getPost('end'))) {
-			if ($studyEntity->end < $studyEntity->start) {
-				return redirect()->back()->withInput()->with('errors',['end'=>'La Fecha Fin no pude ser Menor a la Fecha Inicio.'] );
+			if (strtotime($studyEntity->end) < strtotime($studyEntity->start)) {
+				return redirect()->back()->withInput()->with('errors', ['end' => "La Fecha Fin no puede ser Menor a la Fecha Inicio"]);
 			}
 		}
 		/**Insertamos el Study */
 		$this->studyModel->insert($studyEntity);
-		return redirect()->route('study')->with('success',"Tu Estudio en {$studyEntity->entity} se Guardo Correctamente.");
+		return redirect()->route('study')->with('success', "Tu Estudio en {$studyEntity->entity} se Guardo Correctamente.");
 	}
 	/**
 	 * Busca el Study por le id
@@ -106,7 +106,7 @@ class StudyController extends BaseController
 			throw PageNotFoundException::forPageNotFound();
 		} else {
 			//Retornamos la viste del formulario de alta
-			return view('Admin/Study/show',['study' => $study]);
+			return view('Admin/Study/show', ['study' => $study]);
 		}
 	}
 	/**
@@ -125,7 +125,7 @@ class StudyController extends BaseController
 			throw PageNotFoundException::forPageNotFound();
 		} else {
 			//Retornamos la viste del formulario de alta
-			return view('Admin/Study/edit',['study' => $study]);
+			return view('Admin/Study/edit', ['study' => $study]);
 		}
 	}
 	/**
@@ -133,7 +133,7 @@ class StudyController extends BaseController
 	 * redirecciona a la vista index
 	 *
 	 * @return redirect
-	*/
+	 */
 	public function update()
 	{
 		//Capturamos el id
@@ -151,13 +151,13 @@ class StudyController extends BaseController
 		/**Entidad Post asignamos las propiedades*/
 		$studyEntity = new StudyEntity($this->request->getPost());
 		if (!empty($this->request->getPost('end'))) {
-			if ($studyEntity->end < $studyEntity->start) {
-				return redirect()->back()->withInput()->with('errors',['end'=>'La Fecha Fin no pude ser Menor a la Fecha Inicio.'] );
+			if (strtotime($studyEntity->end) < strtotime($studyEntity->start)) {
+				return redirect()->back()->withInput()->with('errors', ['end' => "La Fecha Fin no puede ser Menor a la Fecha Inicio"]);
 			}
 		}
 		/**Actualiza el Study */
-		$this->studyModel->update($id,$studyEntity);
-		return redirect()->route('study')->with('success',"Tu Estudio en {$studyEntity->entity} se Actualizó Correctamente.");
+		$this->studyModel->update($id, $studyEntity);
+		return redirect()->route('study')->with('success', "Tu Estudio en {$studyEntity->entity} se Actualizó Correctamente.");
 	}
 
 	/**
@@ -177,7 +177,7 @@ class StudyController extends BaseController
 		} else {
 			/**Actualiza el Study */
 			$this->studyModel->delete($id);
-			return redirect()->route('study')->with('success',"Tu Estudio en {$study->entity} se Elimino Correctamente.");
+			return redirect()->route('study')->with('success', "Tu Estudio en {$study->entity} se Elimino Correctamente.");
 		}
 	}
 }
