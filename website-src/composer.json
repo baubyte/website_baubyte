@@ -10,7 +10,7 @@
 		"denis303/codeigniter4-recaptcha": "dev-master",
 		"myth/auth": "^1.0",
 		"hermawan/codeigniter4-datatables": "^0.6.1",
-		"dompdf/dompdf": "^1.0"
+		"dompdf/dompdf": "^2.0.2"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.9",
