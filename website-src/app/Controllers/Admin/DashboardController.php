@@ -31,9 +31,12 @@ class DashboardController extends BaseController
 		$targetFolder = WRITEPATH."uploads".DIRECTORY_SEPARATOR."profile".DIRECTORY_SEPARATOR."images";
 		$linkFolder =  FCPATH."uploads".DIRECTORY_SEPARATOR."profile".DIRECTORY_SEPARATOR."images";
 		//dd($targetFolder,$linkFolder);
-		symlink($targetFolder,$linkFolder);
+		try {
+			symlink($targetFolder,$linkFolder);
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), $e->getCode(), $e);
+		}
 		return 'success';
-
 		//ln -s /var/www/writable/uploads/profile/images /var/www/html/uploads/profile/images
 	}
 }
