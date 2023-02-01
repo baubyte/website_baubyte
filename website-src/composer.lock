@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0905a8943cc66f6a848b8a3d64c863a9",
+    "content-hash": "c07c780834e613956a896895c9b286c6",
     "packages": [
         {
             "name": "codeigniter4/framework",
@@ -297,16 +297,16 @@
         },
         {
             "name": "hermawan/codeigniter4-datatables",
-            "version": "v0.5.4",
+            "version": "v0.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables.git",
-                "reference": "50a9af5f33b79d37bda73e6b293566d797c69a31"
+                "reference": "b3ffc89d449520ce6e0c41a69c8a949302b8dd1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hermawanramadhan/CodeIgniter4-DataTables/zipball/50a9af5f33b79d37bda73e6b293566d797c69a31",
-                "reference": "50a9af5f33b79d37bda73e6b293566d797c69a31",
+                "url": "https://api.github.com/repos/hermawanramadhan/CodeIgniter4-DataTables/zipball/b3ffc89d449520ce6e0c41a69c8a949302b8dd1a",
+                "reference": "b3ffc89d449520ce6e0c41a69c8a949302b8dd1a",
                 "shasum": ""
             },
             "require": {
@@ -333,9 +333,9 @@
             "description": "Serverside Datatables library for CodeIgniter4",
             "support": {
                 "issues": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables/issues",
-                "source": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables/tree/v0.5.4"
+                "source": "https://github.com/hermawanramadhan/CodeIgniter4-DataTables/tree/v0.6.1"
             },
-            "time": "2022-02-16T09:31:24+00:00"
+            "time": "2022-05-25T15:13:25+00:00"
         },
         {
             "name": "laminas/laminas-escaper",

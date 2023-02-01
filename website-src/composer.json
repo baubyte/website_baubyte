@@ -9,7 +9,7 @@
 		"codeigniter4/framework": "^4",
 		"denis303/codeigniter4-recaptcha": "dev-master",
 		"myth/auth": "^1.0",
-		"hermawan/codeigniter4-datatables": "^0.5.2",
+		"hermawan/codeigniter4-datatables": "^0.6.1",
 		"dompdf/dompdf": "^1.0"
 	},
 	"require-dev": {
